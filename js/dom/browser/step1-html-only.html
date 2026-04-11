@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HTMLタグ復習ページ（表示＋コード）</title>
+</head>
+<body>
+
+<h1>HTMLタグ復習ページ（表示＋コード）</h1>
+
+<!-- ===================== -->
+<!-- 表示エリア -->
+<!-- ===================== -->
+
+<section>
+  <h2>見出しタグ（表示）</h2>
+
+  <h1>これは h1 タグです</h1>
+  <h2>これは h2 タグです</h2>
+  <h3>これは h3 タグです</h3>
+  <h4>これは h4 タグです</h4>
+  <h5>これは h5 タグです</h5>
+  <h6>これは h6 タグです</h6>
+</section>
+
+<hr />
+
+<section>
+  <h2>段落・強調（表示）</h2>
+
+  <p>これは p タグです</p>
+  <p><strong>strong タグ</strong></p>
+  <p><em>em タグ</em></p>
+  <p>改行<br />brタグ</p>
+</section>
+
+<hr />
+
+<section>
+  <h2>リスト（表示）</h2>
+
+  <ul>
+    <li>liタグ</li>
+    <li>箇条書き</li>
+  </ul>
+
+  <ol>
+    <li>番号付き</li>
+    <li>リスト</li>
+  </ol>
+</section>
+
+<hr />
+
+<section>
+  <h2>リンクと画像（表示）</h2>
+
+  <a href="https://developer.mozilla.org/ja/" target="_blank" rel="noopener noreferrer">
+    リンク（aタグ）
+  </a>
+
+  <br /><br />
+
+  <img src="https://via.placeholder.com/200x100.png?text=img" alt="imgタグ" />
+</section>
+
+<hr />
+
+<section>
+  <h2>フォーム（表示）</h2>
+
+  <form>
+    <label for="name">名前</label><br />
+    <input type="text" id="name" /><br /><br />
+
+    <textarea></textarea><br /><br />
+
+    <button>送信</button>
+  </form>
+</section>
+
+<hr />
+
+<!-- ===================== -->
+<!-- コード表示エリア -->
+<!-- ===================== -->
+
+<section>
+  <h2>対応コード（コメント付き）</h2>
+
+<pre><code>&lt;!-- html：ルート要素 --&gt;
+&lt;html lang="ja"&gt;
+
+&lt;!-- head：メタ情報 --&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8" /&gt;
+  &lt;title&gt;HTMLタグ復習ページ&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;!-- body：表示内容 --&gt;
+&lt;body&gt;
+
+  &lt;!-- 見出しタグ --&gt;
+  &lt;h1&gt;これは h1 タグです&lt;/h1&gt;
+  &lt;h2&gt;これは h2 タグです&lt;/h2&gt;
+
+  &lt;!-- p：段落 --&gt;
+  &lt;p&gt;これは p タグです&lt;/p&gt;
+
+  &lt;!-- strong：強調（重要） --&gt;
+  &lt;p&gt;&lt;strong&gt;strong タグ&lt;/strong&gt;&lt;/p&gt;
+
+  &lt;!-- em：強調（ニュアンス） --&gt;
+  &lt;p&gt;&lt;em&gt;em タグ&lt;/em&gt;&lt;/p&gt;
+
+  &lt;!-- br：改行 --&gt;
+  &lt;p&gt;改行&lt;br /&gt;brタグ&lt;/p&gt;
+
+  &lt;!-- ul / li：順序なしリスト --&gt;
+  &lt;ul&gt;
+    &lt;li&gt;liタグ&lt;/li&gt;
+  &lt;/ul&gt;
+
+  &lt;!-- ol：順序ありリスト --&gt;
+  &lt;ol&gt;
+    &lt;li&gt;番号付き&lt;/li&gt;
+  &lt;/ol&gt;
+
+  &lt;!-- a：リンク --&gt;
+  &lt;a href="URL"&gt;リンク&lt;/a&gt;
+
+  &lt;!-- img：画像 --&gt;
+  &lt;img src="URL" alt="説明" /&gt;
+
+  &lt;!-- form：入力フォーム --&gt;
+  &lt;form&gt;
+    &lt;label&gt;名前&lt;/label&gt;
+    &lt;input type="text" /&gt;
+    &lt;textarea&gt;&lt;/textarea&gt;
+    &lt;button&gt;送信&lt;/button&gt;
+  &lt;/form&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+</section>
+
+</body>
+</html>
