@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HTMLタグ復習ページ（表示＋コード＋CSS＋JS）</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      padding: 32px 16px 64px;
+      font-family: "Segoe UI", "Hiragino Sans", "Yu Gothic UI", sans-serif;
+      line-height: 1.7;
+      color: #1f2937;
+      background: linear-gradient(to bottom, #f8fafc, #eef2ff);
+      max-width: 960px;
+      margin-inline: auto;
+    }
+
+    ::selection {
+      background: #bfdbfe;
+      color: #111827;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      line-height: 1.3;
+      margin-top: 0;
+    }
+
+    body > h1 {
+      margin-bottom: 24px;
+      padding-bottom: 12px;
+      border-bottom: 4px solid #2563eb;
+      color: #0f172a;
+      letter-spacing: 0.02em;
+    }
+
+    h2 {
+      margin-bottom: 16px;
+      padding-left: 12px;
+      border-left: 6px solid #3b82f6;
+      color: #1d4ed8;
+    }
+
+    h3 {
+      color: #334155;
+    }
+
+    h4, h5, h6 {
+      color: #475569;
+    }
+
+    section {
+      margin-bottom: 32px;
+      padding: 24px;
+      background: #ffffff;
+      border: 1px solid #dbeafe;
+      border-radius: 16px;
+      box-shadow: 0 10px 25px rgba(15, 23, 42, 0.06);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    section:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 16px 30px rgba(15, 23, 42, 0.10);
+    }
+
+    hr {
+      border: none;
+      height: 2px;
+      margin: 32px 0;
+      background: linear-gradient(to right, transparent, #93c5fd, transparent);
+    }
+
+    p {
+      margin: 0 0 12px;
+    }
+
+    strong {
+      color: #b91c1c;
+      font-weight: 700;
+    }
+
+    em {
+      color: #7c3aed;
+      font-style: italic;
+    }
+
+    code {
+      font-family: Consolas, Monaco, monospace;
+    }
+
+    a {
+      color: #2563eb;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.2s ease, text-decoration-color 0.2s ease;
+    }
+
+    a:hover {
+      color: #1d4ed8;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    a:visited {
+      color: #7c3aed;
+    }
+
+    ul, ol {
+      padding-left: 24px;
+      margin: 12px 0 16px;
+    }
+
+    li {
+      margin-bottom: 6px;
+    }
+
+    ul li::marker {
+      color: #2563eb;
+    }
+
+    ol li::marker {
+      color: #7c3aed;
+      font-weight: 700;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+      height: auto;
+      border: 1px solid #cbd5e1;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    }
+
+    form {
+      margin-top: 8px;
+    }
+
+    label {
+      display: inline-block;
+      margin-bottom: 6px;
+      font-weight: 600;
+      color: #0f172a;
+    }
+
+    input,
+    textarea,
+    button {
+      font: inherit;
+    }
+
+    input[type="text"],
+    textarea {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1px solid #cbd5e1;
+      border-radius: 10px;
+      background: #f8fafc;
+      transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        background-color 0.2s ease;
+      outline: none;
+    }
+
+    input[type="text"]:hover,
+    textarea:hover {
+      border-color: #93c5fd;
+      background: #ffffff;
+    }
+
+    input[type="text"]:focus,
+    textarea:focus {
+      border-color: #2563eb;
+      background: #ffffff;
+      box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.15);
+    }
+
+    textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    button {
+      display: inline-block;
+      padding: 12px 18px;
+      border: none;
+      border-radius: 10px;
+      background: linear-gradient(to right, #2563eb, #3b82f6);
+      color: #ffffff;
+      font-weight: 700;
+      cursor: pointer;
+      transition:
+        transform 0.15s ease,
+        box-shadow 0.15s ease,
+        opacity 0.15s ease;
+      box-shadow: 0 8px 18px rgba(37, 99, 235, 0.25);
+    }
+
+    button:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 10px 22px rgba(37, 99, 235, 0.3);
+    }
+
+    button:active {
+      transform: translateY(1px) scale(0.99);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 8px;
+      overflow: hidden;
+      border-radius: 12px;
+      background: #ffffff;
+    }
+
+    thead {
+      background: #dbeafe;
+    }
+
+    th,
+    td {
+      border: 1px solid #bfdbfe;
+      padding: 12px 14px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      color: #1e3a8a;
+      font-weight: 700;
+    }
+
+    tbody tr:nth-child(even) {
+      background: #f8fbff;
+    }
+
+    tbody tr:hover {
+      background: #eff6ff;
+    }
+
+    pre {
+      margin: 0;
+      padding: 20px;
+      overflow-x: auto;
+      background: #0f172a;
+      color: #e2e8f0;
+      border-radius: 14px;
+      border: 1px solid #1e293b;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    }
+
+    pre code {
+      display: block;
+      font-family: "Cascadia Code", Consolas, Monaco, monospace;
+      font-size: 0.95rem;
+      line-height: 1.7;
+      white-space: pre;
+    }
+
+    a[target="_blank"]::after {
+      content: " ↗";
+      font-size: 0.9em;
+    }
+
+    input[id="name"] {
+      border-left: 4px solid #2563eb;
+    }
+
+    section > h2::before {
+      content: "§ ";
+      color: #93c5fd;
+      font-weight: 800;
+    }
+
+    .js-panel {
+      margin-top: 16px;
+      padding: 16px;
+      border: 1px solid #bfdbfe;
+      border-radius: 12px;
+      background: #eff6ff;
+    }
+
+    .js-output {
+      margin-top: 8px;
+      padding: 12px;
+      border-radius: 10px;
+      background: #ffffff;
+      border: 1px solid #cbd5e1;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .counter {
+      font-weight: 700;
+      color: #1d4ed8;
+    }
+
+    @media (max-width: 640px) {
+      body {
+        padding: 20px 12px 40px;
+      }
+
+      section {
+        padding: 18px;
+        border-radius: 12px;
+      }
+
+      pre {
+        padding: 14px;
+      }
+
+      button {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<h1>HTMLタグ復習ページ（表示＋コード＋CSS＋JS）</h1>
+
+<section>
+  <h2>見出しタグ（表示）</h2>
+
+  <h1>これは h1 タグです</h1>
+  <h2>これは h2 タグです</h2>
+  <h3>これは h3 タグです</h3>
+  <h4>これは h4 タグです</h4>
+  <h5>これは h5 タグです</h5>
+  <h6>これは h6 タグです</h6>
+</section>
+
+<hr />
+
+<section>
+  <h2>段落・強調（表示）</h2>
+
+  <p>これは p タグです</p>
+  <p><strong>strong タグ</strong></p>
+  <p><em>em タグ</em></p>
+  <p>改行<br />brタグ</p>
+</section>
+
+<hr />
+
+<section>
+  <h2>リスト（表示）</h2>
+
+  <ul>
+    <li>liタグ</li>
+    <li>箇条書き</li>
+  </ul>
+
+  <ol>
+    <li>番号付き</li>
+    <li>リスト</li>
+  </ol>
+</section>
+
+<hr />
+
+<section>
+  <h2>リンクと画像（表示）</h2>
+
+  <a href="https://developer.mozilla.org/ja/" target="_blank" rel="noopener noreferrer">
+    リンク（aタグ）
+  </a>
+
+  <br /><br />
+
+  <img src="https://via.placeholder.com/200x100.png?text=img" alt="imgタグ" />
+</section>
+
+<hr />
+
+<section>
+  <h2>フォーム（表示＋JS）</h2>
+
+  <form id="sample-form">
+    <label for="name">名前</label><br />
+    <input type="text" id="name" placeholder="名前を入力してください" /><br /><br />
+
+    <label for="message">メッセージ</label><br />
+    <textarea id="message" placeholder="メッセージを入力してください"></textarea><br /><br />
+
+    <button type="button" id="submit-button">送信</button>
+    <button type="button" id="toggle-code-button">コード表示を切り替え</button>
+  </form>
+
+  <div class="js-panel">
+    <p>送信回数: <span id="submit-count" class="counter">0</span></p>
+    <div class="js-output">
+      <p>入力中の名前: <span id="live-name">未入力</span></p>
+      <p>入力中のメッセージ: <span id="live-message">未入力</span></p>
+    </div>
+  </div>
+</section>
+
+<hr />
+
+<section>
+  <h2>表（表示＋JS）</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>タグ</th>
+        <th>役割</th>
+      </tr>
+    </thead>
+    <tbody id="tag-table-body">
+      <tr>
+        <td>h1</td>
+        <td>最上位見出し</td>
+      </tr>
+      <tr>
+        <td>p</td>
+        <td>段落</td>
+      </tr>
+      <tr>
+        <td>a</td>
+        <td>リンク</td>
+      </tr>
+      <tr>
+        <td>form</td>
+        <td>入力フォーム</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<hr />
+
+<section id="code-section">
+  <h2>対応コード（コメント付き）</h2>
+
+<pre><code>&lt;!-- html：ルート要素 --&gt;
+&lt;html lang="ja"&gt;
+
+&lt;!-- head：メタ情報 --&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8" /&gt;
+  &lt;title&gt;HTMLタグ復習ページ&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;!-- body：表示内容 --&gt;
+&lt;body&gt;
+
+  &lt;!-- 見出しタグ --&gt;
+  &lt;h1&gt;これは h1 タグです&lt;/h1&gt;
+  &lt;h2&gt;これは h2 タグです&lt;/h2&gt;
+
+  &lt;!-- p：段落 --&gt;
+  &lt;p&gt;これは p タグです&lt;/p&gt;
+
+  &lt;!-- strong：強調（重要） --&gt;
+  &lt;p&gt;&lt;strong&gt;strong タグ&lt;/strong&gt;&lt;/p&gt;
+
+  &lt;!-- em：強調（ニュアンス） --&gt;
+  &lt;p&gt;&lt;em&gt;em タグ&lt;/em&gt;&lt;/p&gt;
+
+  &lt;!-- br：改行 --&gt;
+  &lt;p&gt;改行&lt;br /&gt;brタグ&lt;/p&gt;
+
+  &lt;!-- ul / li：順序なしリスト --&gt;
+  &lt;ul&gt;
+    &lt;li&gt;liタグ&lt;/li&gt;
+  &lt;/ul&gt;
+
+  &lt;!-- ol：順序ありリスト --&gt;
+  &lt;ol&gt;
+    &lt;li&gt;番号付き&lt;/li&gt;
+  &lt;/ol&gt;
+
+  &lt;!-- a：リンク --&gt;
+  &lt;a href="URL"&gt;リンク&lt;/a&gt;
+
+  &lt;!-- img：画像 --&gt;
+  &lt;img src="URL" alt="説明" /&gt;
+
+  &lt;!-- form：入力フォーム --&gt;
+  &lt;form&gt;
+    &lt;label&gt;名前&lt;/label&gt;
+    &lt;input type="text" /&gt;
+    &lt;textarea&gt;&lt;/textarea&gt;
+    &lt;button&gt;送信&lt;/button&gt;
+  &lt;/form&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+</section>
+
+<script>
+  // =========================
+  // 1. 要素取得
+  // =========================
+  const nameInput = document.querySelector("#name");
+  const messageInput = document.querySelector("#message");
+  const submitButton = document.querySelector("#submit-button");
+  const toggleCodeButton = document.querySelector("#toggle-code-button");
+  const liveName = document.querySelector("#live-name");
+  const liveMessage = document.querySelector("#live-message");
+  const submitCount = document.querySelector("#submit-count");
+  const tableBody = document.querySelector("#tag-table-body");
+  const codeSection = document.querySelector("#code-section");
+
+  // =========================
+  // 2. 状態
+  // =========================
+  let count = 0;
+
+  // =========================
+  // 3. 入力イベント
+  // =========================
+  nameInput.addEventListener("input", () => {
+    const value = nameInput.value.trim();
+    liveName.textContent = value === "" ? "未入力" : value;
+  });
+
+  messageInput.addEventListener("input", () => {
+    const value = messageInput.value.trim();
+    liveMessage.textContent = value === "" ? "未入力" : value;
+  });
+
+  // =========================
+  // 4. クリックイベント
+  // =========================
+  submitButton.addEventListener("click", () => {
+    count += 1;
+    submitCount.textContent = String(count);
+
+    const nameValue = nameInput.value.trim() || "匿名";
+    const messageValue = messageInput.value.trim() || "メッセージなし";
+
+    const newRow = document.createElement("tr");
+
+    const tagCell = document.createElement("td");
+    tagCell.textContent = "JS追加行";
+
+    const roleCell = document.createElement("td");
+    roleCell.textContent = `${nameValue}: ${messageValue}`;
+
+    newRow.appendChild(tagCell);
+    newRow.appendChild(roleCell);
+    tableBody.appendChild(newRow);
+
+    alert("送信ボタンがクリックされました。表に1行追加しました。");
+  });
+
+  // =========================
+  // 5. 表示切替
+  // =========================
+  toggleCodeButton.addEventListener("click", () => {
+    codeSection.classList.toggle("hidden");
+  });
+</script>
+
+</body>
+</html>
