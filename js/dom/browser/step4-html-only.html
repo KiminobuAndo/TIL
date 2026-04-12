@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>STEP4: メッセージ管理フォーム</title>
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <header class="page-header">
+    <div class="container">
+      <p class="page-header__eyebrow">HTML / CSS / JavaScript STEP4</p>
+      <h1 class="page-header__title">メッセージ管理フォーム</h1>
+      <p class="page-header__description">
+        外部ファイル分離、フォーム送信、バリデーション、一覧表示、状態管理へ進むためのHTML骨格
+      </p>
+    </div>
+  </header>
+
+  <main class="page-main">
+    <div class="container">
+      <div class="layout">
+        <!-- 入力エリア -->
+        <section class="panel" aria-labelledby="form-title">
+          <h2 id="form-title" class="panel__title">メッセージを入力</h2>
+
+          <form id="message-form" class="message-form" novalidate>
+            <div class="form-group">
+              <label for="name" class="form-label">名前</label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                class="form-input"
+                placeholder="例：安藤"
+              />
+              <p id="name-error" class="error-message" aria-live="polite"></p>
+            </div>
+
+            <div class="form-group">
+              <label for="message" class="form-label">メッセージ</label>
+              <textarea
+                id="message"
+                name="message"
+                class="form-textarea"
+                rows="6"
+                placeholder="メッセージを入力してください"
+              ></textarea>
+              <p id="message-error" class="error-message" aria-live="polite"></p>
+            </div>
+
+            <div class="form-actions">
+              <button type="submit" class="button button--primary">送信</button>
+              <button type="button" id="reset-button" class="button button--secondary">
+                入力をリセット
+              </button>
+            </div>
+          </form>
+        </section>
+
+        <!-- 補助表示エリア -->
+        <aside class="panel" aria-labelledby="preview-title">
+          <h2 id="preview-title" class="panel__title">現在の状態</h2>
+
+          <div class="status-block">
+            <p class="status-label">登録件数</p>
+            <p class="status-value">
+              <span id="message-count">0</span> 件
+            </p>
+          </div>
+
+          <div class="status-block">
+            <h3 class="status-subtitle">入力プレビュー</h3>
+            <p><strong>名前:</strong> <span id="live-name">未入力</span></p>
+            <p><strong>メッセージ:</strong> <span id="live-message">未入力</span></p>
+          </div>
+
+          <div class="status-block">
+            <p id="form-status" class="form-status" aria-live="polite"></p>
+          </div>
+        </aside>
+      </div>
+
+      <!-- 一覧表示エリア -->
+      <section class="panel" aria-labelledby="list-title">
+        <div class="panel-heading">
+          <h2 id="list-title" class="panel__title">メッセージ一覧</h2>
+          <button type="button" id="clear-button" class="button button--danger">
+            全件削除
+          </button>
+        </div>
+
+        <p id="empty-state" class="empty-state">
+          まだメッセージは登録されていません。
+        </p>
+
+        <div class="table-wrapper">
+          <table class="message-table" aria-describedby="list-title">
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">名前</th>
+                <th scope="col">メッセージ</th>
+                <th scope="col">操作</th>
+              </tr>
+            </thead>
+            <tbody id="message-table-body">
+              <!-- JavaScriptで描画 -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- 学習メモエリア -->
+      <section class="panel" aria-labelledby="notes-title">
+        <h2 id="notes-title" class="panel__title">このSTEPで扱う論点</h2>
+        <ul class="learning-list">
+          <li>HTML / CSS / JS の外部ファイル分離</li>
+          <li>form の submit イベント</li>
+          <li>preventDefault() による送信制御</li>
+          <li>入力値のバリデーション</li>
+          <li>配列による状態管理</li>
+          <li>render関数による一覧描画</li>
+          <li>LocalStorage による保存</li>
+        </ul>
+      </section>
+    </div>
+  </main>
+
+  <script src="./script.js"></script>
+</body>
+</html>
