@@ -1,0 +1,564 @@
+/* =========================================================
+   STEP5: CSS Layout / Class Design
+   方針
+   - HTML構造は意味単位でclassを付与
+   - Layout / Component / Form / Table / Status に分離
+   - 実務で再利用しやすい naming を意識
+========================================================= */
+
+/* =========================================================
+   1. Reset / Base
+========================================================= */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root {
+  --color-bg: #f3f4f6;
+  --color-surface: #ffffff;
+  --color-surface-muted: #f8fafc;
+
+  --color-border: #d1d5db;
+  --color-border-strong: #9ca3af;
+
+  --color-text: #111827;
+  --color-text-muted: #6b7280;
+  --color-text-light: #9ca3af;
+
+  --color-primary: #2563eb;
+  --color-primary-dark: #1d4ed8;
+  --color-primary-soft: #dbeafe;
+
+  --color-danger: #dc2626;
+  --color-danger-dark: #b91c1c;
+  --color-danger-soft: #fee2e2;
+
+  --color-success: #059669;
+  --color-success-soft: #d1fae5;
+
+  --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.05);
+  --shadow-md: 0 8px 24px rgba(15, 23, 42, 0.08);
+
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 12px;
+  --space-lg: 16px;
+  --space-xl: 24px;
+  --space-2xl: 32px;
+
+  --container-width: 1120px;
+}
+
+html {
+  font-size: 16px;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Hiragino Sans",
+    "Yu Gothic UI", "Noto Sans JP", sans-serif;
+  line-height: 1.6;
+}
+
+img,
+svg,
+video {
+  display: block;
+  max-width: 100%;
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+}
+
+p,
+ul,
+ol {
+  margin-top: 0;
+}
+
+h1,
+h2,
+h3 {
+  margin-top: 0;
+  line-height: 1.3;
+}
+
+/* =========================================================
+   2. Layout
+========================================================= */
+
+.page {
+  background: var(--color-bg);
+}
+
+.container {
+  width: min(100% - 32px, var(--container-width));
+  margin-inline: auto;
+}
+
+.page-header {
+  background: linear-gradient(135deg, #111827, #1f2937);
+  color: #ffffff;
+  padding: 48px 0 40px;
+}
+
+.page-header__inner {
+  display: block;
+}
+
+.page-header__eyebrow {
+  margin-bottom: var(--space-sm);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.page-header__title {
+  margin-bottom: var(--space-md);
+  font-size: clamp(1.9rem, 2vw + 1rem, 2.6rem);
+  font-weight: 800;
+}
+
+.page-header__description {
+  max-width: 760px;
+  margin-bottom: 0;
+  color: rgba(255, 255, 255, 0.84);
+  font-size: 0.98rem;
+}
+
+.page-main {
+  padding: 32px 0 56px;
+}
+
+.page-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(300px, 1fr);
+  gap: 24px;
+  align-items: start;
+  margin-bottom: 24px;
+}
+
+/* =========================================================
+   3. Panel / Section
+========================================================= */
+
+.panel {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  padding: 24px;
+  margin-bottom: 24px;
+}
+
+.panel__header {
+  margin-bottom: 18px;
+}
+
+.panel__title {
+  margin-bottom: 6px;
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--color-text);
+}
+
+.panel__description {
+  margin-bottom: 0;
+  color: var(--color-text-muted);
+  font-size: 0.92rem;
+}
+
+.panel--form {
+  min-height: 100%;
+}
+
+.panel--status {
+  min-height: 100%;
+}
+
+.panel-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.panel-heading__body {
+  min-width: 0;
+}
+
+.panel-heading__actions {
+  flex-shrink: 0;
+}
+
+/* =========================================================
+   4. Form
+========================================================= */
+
+.form {
+  display: block;
+}
+
+.form__group + .form__group {
+  margin-top: 18px;
+}
+
+.form__label {
+  display: inline-block;
+  margin-bottom: 6px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.form__control {
+  width: 100%;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  color: var(--color-text);
+  padding: 12px 14px;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.form__control::placeholder {
+  color: var(--color-text-light);
+}
+
+.form__control:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.12);
+}
+
+.form__control--textarea {
+  min-height: 144px;
+  resize: vertical;
+}
+
+.form__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.form__error {
+  min-height: 1.4em;
+  margin-top: 6px;
+  margin-bottom: 0;
+  color: var(--color-danger);
+  font-size: 0.84rem;
+  font-weight: 600;
+}
+
+/* =========================================================
+   5. Buttons
+========================================================= */
+
+.button {
+  appearance: none;
+  border: 1px solid transparent;
+  border-radius: var(--radius-md);
+  padding: 10px 16px;
+  min-height: 42px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.15s ease,
+    box-shadow 0.2s ease;
+}
+
+.button:hover {
+  transform: translateY(-1px);
+}
+
+.button:active {
+  transform: translateY(0);
+}
+
+.button:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.15);
+}
+
+.button--primary {
+  background: var(--color-primary);
+  color: #ffffff;
+}
+
+.button--primary:hover {
+  background: var(--color-primary-dark);
+}
+
+.button--secondary {
+  background: #f3f4f6;
+  color: var(--color-text);
+  border-color: var(--color-border);
+}
+
+.button--secondary:hover {
+  background: #e5e7eb;
+}
+
+.button--danger {
+  background: var(--color-danger);
+  color: #ffffff;
+}
+
+.button--danger:hover {
+  background: var(--color-danger-dark);
+}
+
+/* =========================================================
+   6. Status / Preview
+========================================================= */
+
+.status-card-list {
+  display: grid;
+  gap: 16px;
+}
+
+.status-card {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface-muted);
+  padding: 16px;
+}
+
+.status-card--count {
+  background: linear-gradient(135deg, #eff6ff, #f8fafc);
+  border-color: #bfdbfe;
+}
+
+.status-card__label {
+  margin-bottom: 6px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.status-card__value {
+  margin-bottom: 0;
+  line-height: 1.2;
+}
+
+.status-card__number {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--color-primary);
+}
+
+.status-card__unit {
+  margin-left: 4px;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.status-card__title {
+  margin-bottom: 12px;
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--color-text);
+}
+
+.preview-list {
+  display: grid;
+  gap: 12px;
+}
+
+.preview-list__item {
+  padding: 10px 12px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: #ffffff;
+}
+
+.preview-list__label {
+  margin-bottom: 4px;
+  font-size: 0.84rem;
+  font-weight: 700;
+  color: var(--color-text-muted);
+}
+
+.preview-list__value {
+  margin-bottom: 0;
+  font-size: 0.95rem;
+  color: var(--color-text);
+}
+
+.status-message {
+  min-height: 1.5em;
+  margin-bottom: 0;
+  color: var(--color-primary-dark);
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+/* =========================================================
+   7. Empty state / Notes
+========================================================= */
+
+.empty-state {
+  margin-bottom: 12px;
+  padding: 12px 14px;
+  border: 1px dashed var(--color-border-strong);
+  border-radius: var(--radius-md);
+  background: var(--color-surface-muted);
+  color: var(--color-text-muted);
+  font-size: 0.95rem;
+}
+
+.notes-list {
+  padding-left: 1.2rem;
+  margin-bottom: 0;
+}
+
+.notes-list__item + .notes-list__item {
+  margin-top: 8px;
+}
+
+/* =========================================================
+   8. Table
+========================================================= */
+
+.table-wrapper {
+  overflow-x: auto;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 720px;
+}
+
+.table__head {
+  background: #f9fafb;
+}
+
+.table__cell {
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--color-border);
+  text-align: left;
+  vertical-align: top;
+  font-size: 0.95rem;
+}
+
+.table__cell--head {
+  font-weight: 800;
+  color: var(--color-text);
+}
+
+.table__cell--id {
+  width: 80px;
+}
+
+.table__cell--name {
+  width: 180px;
+}
+
+.table__cell--action {
+  width: 140px;
+}
+
+.table__body .table__row:hover {
+  background: #f8fafc;
+}
+
+.table__body .table__row:last-child .table__cell {
+  border-bottom: none;
+}
+
+/* =========================================================
+   9. Utility-like target styling
+========================================================= */
+
+#live-name,
+#live-message,
+#message-count {
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+#message-count {
+  color: var(--color-primary);
+}
+
+/* =========================================================
+   10. Responsive
+========================================================= */
+
+@media (max-width: 960px) {
+  .page-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .panel-heading {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .panel-heading__actions .button {
+    width: 100%;
+  }
+}
+
+@media (max-width: 640px) {
+  .container {
+    width: min(100% - 24px, var(--container-width));
+  }
+
+  .page-header {
+    padding: 36px 0 28px;
+  }
+
+  .page-main {
+    padding: 24px 0 40px;
+  }
+
+  .panel {
+    padding: 18px;
+    border-radius: 12px;
+  }
+
+  .form__actions {
+    flex-direction: column;
+  }
+
+  .form__actions .button {
+    width: 100%;
+  }
+
+  .status-card__number {
+    font-size: 1.6rem;
+  }
+}
