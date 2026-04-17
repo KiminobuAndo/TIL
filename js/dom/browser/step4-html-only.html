@@ -124,6 +124,71 @@
           <li>LocalStorage による保存</li>
         </ul>
       </section>
+
+      <!-- 対応コード表示エリア -->
+      <section class="panel" aria-labelledby="code-title">
+        <h2 id="code-title" class="panel__title">対応コード（HTML）</h2>
+        <p class="panel__description">
+          下は、この画面の構造を作っているHTMLの一部です。ブラウザ上で見せるために、タグはエスケープしています。
+        </p>
+
+        <pre><code>&lt;header class="page-header"&gt;
+  &lt;div class="container"&gt;
+    &lt;p class="page-header__eyebrow"&gt;HTML / CSS / JavaScript STEP4&lt;/p&gt;
+    &lt;h1 class="page-header__title"&gt;メッセージ管理フォーム&lt;/h1&gt;
+    &lt;p class="page-header__description"&gt;
+      外部ファイル分離、フォーム送信、バリデーション、一覧表示、状態管理へ進むためのHTML骨格
+    &lt;/p&gt;
+  &lt;/div&gt;
+&lt;/header&gt;
+
+&lt;form id="message-form" class="message-form" novalidate&gt;
+  &lt;div class="form-group"&gt;
+    &lt;label for="name" class="form-label"&gt;名前&lt;/label&gt;
+    &lt;input
+      type="text"
+      id="name"
+      name="name"
+      class="form-input"
+      placeholder="例：安藤"
+    /&gt;
+    &lt;p id="name-error" class="error-message" aria-live="polite"&gt;&lt;/p&gt;
+  &lt;/div&gt;
+
+  &lt;div class="form-group"&gt;
+    &lt;label for="message" class="form-label"&gt;メッセージ&lt;/label&gt;
+    &lt;textarea
+      id="message"
+      name="message"
+      class="form-textarea"
+      rows="6"
+      placeholder="メッセージを入力してください"
+    &gt;&lt;/textarea&gt;
+    &lt;p id="message-error" class="error-message" aria-live="polite"&gt;&lt;/p&gt;
+  &lt;/div&gt;
+
+  &lt;div class="form-actions"&gt;
+    &lt;button type="submit" class="button button--primary"&gt;送信&lt;/button&gt;
+    &lt;button type="button" id="reset-button" class="button button--secondary"&gt;
+      入力をリセット
+    &lt;/button&gt;
+  &lt;/div&gt;
+&lt;/form&gt;
+
+&lt;table class="message-table" aria-describedby="list-title"&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th scope="col"&gt;ID&lt;/th&gt;
+      &lt;th scope="col"&gt;名前&lt;/th&gt;
+      &lt;th scope="col"&gt;メッセージ&lt;/th&gt;
+      &lt;th scope="col"&gt;操作&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody id="message-table-body"&gt;
+    &lt;!-- JavaScriptで描画 --&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</code></pre>
+      </section>
     </div>
   </main>
 
