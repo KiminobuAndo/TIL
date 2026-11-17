@@ -1,0 +1,22 @@
+services:
+  rust:
+    build:
+      context: .
+      args:
+        UID: "1000"
+        GID: "1000"
+    working_dir: /workspace
+    volumes:
+      # ソースはホスト側に置く（エディタはホストで使う）
+      - .:/workspace
+      # crates.io の取得結果をコンテナ再作成後も再利用する
+      - cargo-registry:/usr/local/cargo/registry
+      # ビルド成果物の永続化（毎回フルビルドしない）
+      - cargo-target:/cargo-target
+    command: bash
+    tty: true
+    stdin_open: true
+
+volumes:
+  cargo-registry:
+  cargo-target:
