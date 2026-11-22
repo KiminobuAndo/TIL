@@ -1,0 +1,5 @@
+# ビルド成果物（コンテナ内では /cargo-target に出るが、念のため）
+target/
+**/*.rs.bk
+
+# Cargo.lock はコミットする（バイナリ crate のため除外しない）
