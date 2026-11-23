@@ -77,6 +77,7 @@ rust/
 
 `notes/rust-3layer-matrix.md` を埋める。L0〜L7（言語普遍層）→ P1〜P3（パラダイム層）→ S1〜S8（Rust 固有層）の順。
 「これは普遍か、Rust 固有か」をラベリングしながら進める。
+参照用のまとめは `notes/rust-syntax-overview.md`（基本文法 + Rust 固有の特徴 + 他言語比較）。
 
 ### ステージ1.5: 最小実装による文法定着
 
