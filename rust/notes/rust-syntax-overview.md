@@ -304,6 +304,8 @@ println!("{}", handle.join().unwrap());
 
 Rust の中心思想は「**GC 無しで、メモリ安全性とデータ競合の不在をコンパイル時に保証する**」こと。S1〜S3 はそのための仕組みで、他の主要言語にはほぼ存在しない。
 
+> S1〜S3 の詳しい解説・エラー対処は [`rust-ownership-borrowing.md`](rust-ownership-borrowing.md) を参照。
+
 ### S1 所有権（Ownership）
 
 **ルール**:
