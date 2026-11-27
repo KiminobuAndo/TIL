@@ -430,6 +430,8 @@ match parse_and_double("21") {
 - `unwrap()` / `expect("msg")` は `None` / `Err` で panic する。学習中・テスト以外では避ける
 - 回復不能なバグは `panic!`（スタックを巻き戻してスレッドを終了）。回復可能なエラーは `Result`、と使い分ける
 
+> S4 の詳しい解説（コンビネータ、`?` の仕組み、独自エラー型、`panic!` との使い分け）は [`rust-error-handling.md`](rust-error-handling.md) を参照。
+
 ### S5 trait とジェネリクス
 
 ```rust
