@@ -79,6 +79,7 @@ rust/
 「これは普遍か、Rust 固有か」をラベリングしながら進める。
 参照用のまとめは `notes/rust-syntax-overview.md`（基本文法 + Rust 固有の特徴 + 他言語比較）。
 所有権・借用・ライフタイム（S1〜S3）の深掘りは `notes/rust-ownership-borrowing.md`（サンプルは `cargo run -p ownership`）。
+`Option` / `Result` とエラー処理（S4）の深掘りは `notes/rust-error-handling.md`（サンプルは `cargo run -p errors`）。
 
 ### ステージ1.5: 最小実装による文法定着
 
