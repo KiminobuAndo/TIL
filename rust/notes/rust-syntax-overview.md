@@ -475,6 +475,8 @@ struct Id(u32);
 - **orphan rule**: 「外部の trait を外部の型に実装する」ことはできない（trait か型のどちらかが自 crate のものである必要がある）
 - 演算子オーバーロードも trait（`std::ops::Add` を実装すると `+` が使える）
 
+> S5 の詳しい解説（デフォルト実装、trait 境界、`dyn Trait` との使い分け、関連型、標準 trait、orphan rule）は [`rust-traits-generics.md`](rust-traits-generics.md) を参照。
+
 ### S6 パターンマッチ（`match`）— 網羅性検査
 
 ```rust
